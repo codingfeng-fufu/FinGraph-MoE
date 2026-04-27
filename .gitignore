@@ -52,7 +52,7 @@ a02518f06caffa8139714e482e9872b1.png
 # Local reference PDFs
 *.pdf
 
-# Legacy / experimental code kept locally but excluded from the GitHub showcase.
+# Legacy / experimental code kept locally.
 src/count_gnn/
 src/doc_count_gnn/
 src/doc_forecast_gnn/

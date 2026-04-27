@@ -51,19 +51,8 @@ scripts/moe/               demo, router, and end-to-end benchmark entrypoints
 scripts/realdata/          active real-data expert training scripts
 tests/                     unit and smoke tests
 docs/                      technical notes and presentation source files
-data/demo/                 small demo assets safe to keep in git
+data/demo/                 small demo assets
 ```
-
-Large local assets are intentionally ignored by git:
-
-- `data/realdata_inputs/`
-- `runs/`
-- `archive/`
-- `tmp/`
-- legacy synthetic GNN prototypes and old experiment branches
-- checkpoints, FAISS indexes, joblib artifacts, generated PPTs, screenshots, PDFs, and `.env`
-
-See `docs/github_upload_checklist.md` before publishing.
 
 ### Setup
 
@@ -89,7 +78,7 @@ LLM_GRAPH_MODEL=qwen-plus
 LLM_GRAPH_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
 ```
 
-Do not commit `.env`.
+Keep `.env` private.
 
 ### Run The Demo
 
@@ -116,7 +105,7 @@ The demo can:
 - extract a query-conditioned graph
 - show the selected expert, retrieved examples, graph trace, and final answer
 
-The app is deployable from a clean GitHub clone. Without local router/model artifacts, the web server still starts and the landing page is available. Expert inference will report that artifacts are not configured.
+The app can start from a fresh clone. Without local router/model artifacts, the web server still starts and the landing page is available. Expert inference will report that artifacts are not configured.
 
 Check service readiness:
 
@@ -148,7 +137,7 @@ runs/realdata_experts/count_v2/best_model.pt
 runs/realdata_experts/predict_tabular_elastic_net_flat_residual/artifact.joblib
 ```
 
-These files are intentionally not committed because they are generated artifacts or depend on private/large data.
+These artifacts are generated locally from private or large training data. They are optional for launching the UI, but required for full expert inference.
 
 When local training data exists under `data/realdata_inputs/`, rebuild the router with:
 
@@ -187,7 +176,7 @@ This evaluates the current real-data expert stack and writes benchmark outputs u
 pytest -q
 ```
 
-The default test configuration is the GitHub-safe baseline. It avoids private data and generated model artifacts.
+The default test configuration is a lightweight baseline. It avoids private data and generated model artifacts.
 
 The current clean-release check covers:
 
@@ -201,7 +190,6 @@ The current clean-release check covers:
 
 - `docs/sum_expert_technical_note.md`: detailed SUM Expert input/output/network explanation.
 - `docs/current_results_showcase.md`: current system summary and demo talking points.
-- `docs/github_upload_checklist.md`: upload checklist and ignored local-only assets.
 
 <p align="right"><a href="#top">Back to top ↑</a></p>
 
@@ -247,20 +235,10 @@ src/moe_router/            文档抽图、Router、编排和 benchmark
 src/realdata_experts/      当前 SUM / COUNT / PREDICT expert 实现
 scripts/moe/               demo、router、benchmark 入口
 scripts/realdata/          当前真实数据 expert 训练脚本
-tests/                     GitHub 安全的单元测试和 smoke tests
+tests/                     轻量单元测试和 smoke tests
 docs/                      技术说明和展示材料文字稿
-data/demo/                 可提交的小型 demo 数据
+data/demo/                 小型 demo 数据
 ```
-
-以下内容不会上传到 GitHub：
-
-- `.env`
-- `data/realdata_inputs/`
-- `data/moe_router_realdata_v1/`
-- `runs/`
-- `archive/`
-- `tmp/`
-- checkpoint、FAISS index、joblib artifact、生成的 PPT、截图、PDF、旧实验分支
 
 ### 1. 安装依赖
 
@@ -288,7 +266,7 @@ LLM_GRAPH_MODEL=qwen-plus
 LLM_GRAPH_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
 ```
 
-不要把 `.env` 提交到 GitHub。
+`.env` 只用于本地私有配置。
 
 ### 3. 启动前端 Demo
 
@@ -320,7 +298,7 @@ http://127.0.0.1:8017
 curl http://127.0.0.1:8000/api/health
 ```
 
-如果是刚从 GitHub clone 下来的干净版本，没有本地模型和 router artifact，返回一般是：
+如果是刚 clone 下来的干净版本，没有本地模型和 router artifact，返回一般是：
 
 ```json
 {
@@ -344,7 +322,7 @@ runs/realdata_experts/count_v2/best_model.pt
 runs/realdata_experts/predict_tabular_elastic_net_flat_residual/artifact.joblib
 ```
 
-这些文件不会上传到 GitHub，因为它们是训练生成物，或者依赖本地真实数据。
+这些 artifact 需要根据本地训练数据生成。没有它们时页面仍可启动，但完整 expert 推理不可用。
 
 如果本地有训练数据 `data/realdata_inputs/`，可以重建 router：
 
@@ -389,7 +367,7 @@ python scripts/moe/run_current_realdata_benchmark.py
 pytest -q
 ```
 
-默认测试配置是 GitHub 安全版本，不依赖私有数据，也不依赖生成的模型 artifact。
+默认测试配置是轻量版本，不依赖私有数据，也不依赖生成的模型 artifact。
 
 当前 clean-release 检查包括：
 
@@ -403,6 +381,5 @@ pytest -q
 
 - `docs/sum_expert_technical_note.md`：SUM Expert 的输入、输出和网络结构。
 - `docs/current_results_showcase.md`：当前成果和 demo 讲解口径。
-- `docs/github_upload_checklist.md`：GitHub 上传检查清单和本地忽略文件说明。
 
 <p align="right"><a href="#top">返回顶部 ↑</a></p>
