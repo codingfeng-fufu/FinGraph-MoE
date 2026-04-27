@@ -1,8 +1,10 @@
+<a id="top"></a>
+
 # FinGraph-MoE
 
 <p align="center">
   <a href="#english">English</a> |
-  <a href="#中文">中文</a>
+  <a href="#chinese">中文</a>
 </p>
 
 ---
@@ -23,7 +25,7 @@ Current expert set:
 
 The current demo focuses on small documents. Large-document chunking and production-scale storage are intentionally out of scope for this stage.
 
-## Architecture
+### Architecture
 
 ```text
 Uploaded document + user query
@@ -39,7 +41,7 @@ Important design point: not every expert is a traditional message-passing GNN. T
 - `COUNT` uses soft comparators, condition encoding, calibration, and add pooling.
 - `PREDICT` currently deploys the strongest tabular residual artifact, with recurrent and Kumo/RFM-style variants kept as experiments.
 
-## Repository Layout
+### Repository Layout
 
 ```text
 apps/demo/                 FastAPI demo app and Chinese workbench UI
@@ -63,7 +65,7 @@ Large local assets are intentionally ignored by git:
 
 See `docs/github_upload_checklist.md` before publishing.
 
-## Setup
+### Setup
 
 Python 3.11+ is recommended.
 
@@ -89,7 +91,7 @@ LLM_GRAPH_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
 
 Do not commit `.env`.
 
-## Run The Demo
+### Run The Demo
 
 ```bash
 python scripts/moe/run_demo_app.py
@@ -133,7 +135,7 @@ Expected clean-clone response:
 
 This is expected when the private/generated artifacts are not present.
 
-## Full Expert Inference
+### Full Expert Inference
 
 Full SUM / COUNT / PREDICT inference requires generated local assets:
 
@@ -171,7 +173,7 @@ After these assets exist, `/api/health` should return:
 }
 ```
 
-## Current Benchmark Entry Point
+### Current Benchmark Entry Point
 
 ```bash
 python scripts/moe/run_current_realdata_benchmark.py
@@ -179,7 +181,7 @@ python scripts/moe/run_current_realdata_benchmark.py
 
 This evaluates the current real-data expert stack and writes benchmark outputs under `runs/`.
 
-## Tests
+### Tests
 
 ```bash
 pytest -q
@@ -195,33 +197,17 @@ The current clean-release check covers:
 - FastAPI app import
 - `/` and `/api/health` responses
 
-## Technical Notes
+### Technical Notes
 
 - `docs/sum_expert_technical_note.md`: detailed SUM Expert input/output/network explanation.
 - `docs/current_results_showcase.md`: current system summary and demo talking points.
 - `docs/github_upload_checklist.md`: upload checklist and ignored local-only assets.
 
-## GitHub Publishing Notes
-
-This directory should be published as an independent repository. Do not publish from the parent home-directory repository.
-
-Recommended flow:
-
-```bash
-git init
-git add .
-git status --short
-git commit -m "Initial FinGraph-MoE prototype"
-git branch -M main
-git remote add origin <your-github-repo-url>
-git push -u origin main
-```
-
-Before committing, confirm that `.env`, `data/realdata_inputs/`, `runs/`, `archive/`, and `tmp/` do not appear in `git status`.
+<p align="right"><a href="#top">Back to top ↑</a></p>
 
 ---
 
-<a id="中文"></a>
+<a id="chinese"></a>
 
 ## 中文
 
@@ -419,20 +405,4 @@ pytest -q
 - `docs/current_results_showcase.md`：当前成果和 demo 讲解口径。
 - `docs/github_upload_checklist.md`：GitHub 上传检查清单和本地忽略文件说明。
 
-### 发布到 GitHub
-
-这个目录应该作为独立仓库发布。不要从上级 home 目录的 Git 仓库发布。
-
-推荐流程：
-
-```bash
-git init
-git add .
-git status --short
-git commit -m "Initial FinGraph-MoE prototype"
-git branch -M main
-git remote add origin <your-github-repo-url>
-git push -u origin main
-```
-
-提交前确认 `.env`、`data/realdata_inputs/`、`runs/`、`archive/`、`tmp/` 没有出现在 `git status` 中。
+<p align="right"><a href="#top">返回顶部 ↑</a></p>
