@@ -1,0 +1,112 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments and local config
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.DS_Store
+
+# IDE / local agents
+.vscode/
+.idea/
+.claude/
+.playwright-mcp/
+
+# Runtime outputs
+runs/
+tmp/
+catboost_info/
+archive/
+
+# Model artifacts and vector indexes
+*.pt
+*.pth
+*.ckpt
+*.joblib
+*.faiss
+*.onnx
+
+# Large/private datasets
+data/realdata_inputs/
+data/moe_router_realdata_v1/router.faiss
+data/moe_router_realdata_v1/router.joblib
+data/moe_router_realdata_v1/training_queries.jsonl
+
+# Generated presentation/browser artifacts
+docs/*.pptx
+docs/*_montage.png
+workbench-current-initial.png
+a02518f06caffa8139714e482e9872b1.png
+
+# Local reference PDFs
+*.pdf
+
+# Legacy / experimental code kept locally but excluded from the GitHub showcase.
+src/count_gnn/
+src/doc_count_gnn/
+src/doc_forecast_gnn/
+src/doc_sum_gnn/
+src/extracted_graph_benchmarks/
+src/moe_gnn/
+src/moe_router/e2e_benchmark.py
+src/moe_router/build.py
+src/moe_router/orchestrator.py
+src/moe_router/query_bank.py
+src/moe_router/realdata_e2e.py
+src/moe_router/route.py
+src/moe_router/run_pipeline.py
+src/realdata_experts/predict_v2/
+src/realdata_experts/predict_v3/
+src/realdata_experts/predict_v4/
+src/realdata_experts/predict_v7/
+src/realdata_experts/predict_v8/
+src/realdata_experts/predict_v9/
+src/realdata_experts/predict_v10/
+
+# Legacy / experimental scripts.
+scripts/legacy/
+scripts/moe/build_moe_router.py
+scripts/moe/route_moe_query.py
+scripts/moe/run_moe_e2e_benchmarks.py
+scripts/moe/run_moe_pipeline.py
+scripts/moe/run_moe_realdata_e2e.py
+scripts/realdata/run_predict_tabular_experiments.py
+scripts/realdata/train_predict_v2.py
+scripts/realdata/train_predict_v3.py
+scripts/realdata/train_predict_v4.py
+scripts/realdata/train_predict_v7.py
+scripts/realdata/train_predict_v8.py
+scripts/realdata/train_predict_v9.py
+scripts/realdata/train_predict_v10.py
+scripts/realdata/validate_predict_v3.py
+scripts/realdata/validate_predict_v4.py
+
+# Legacy / experimental tests.
+tests/test_count_*.py
+tests/test_data.py
+tests/test_doc_*.py
+tests/test_model.py
+tests/test_moe_e2e_benchmark.py
+tests/test_moe_orchestrator.py
+tests/test_moe_router.py
+tests/test_realdata_demo_predict.py
+tests/test_realdata_experts.py
+tests/test_training.py
+
+# Non-core local data/docs.
+data/moe_router_realdata_v1/
+data/tech_test_report.md
+docs/*_deck.js
+docs/WORKSPACE_OVERVIEW.md
+docs/sum_expert.md

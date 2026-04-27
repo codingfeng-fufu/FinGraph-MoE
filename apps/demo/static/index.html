@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文档问答图谱引擎</title>
+    <link rel="stylesheet" href="/static/landing.css" />
+  </head>
+  <body>
+    <main class="landing-shell">
+      <section class="landing-hero">
+        <div class="hero-copy">
+          <div class="brand-row">
+            <span class="brand-mark">DG</span>
+            <div>
+              <p class="landing-eyebrow">GraphDoc Engine</p>
+              <p class="brand-name">文档问答图谱引擎</p>
+            </div>
+          </div>
+          <h1>让文档进入可计算状态。</h1>
+          <p class="hero-lede">读取文档，按问题抽图，再交给专家计算。</p>
+          <div class="hero-actions">
+            <a class="hero-btn primary" href="/workbench">进入工作台</a>
+            <a class="hero-btn secondary" href="#architecture">查看产品架构</a>
+          </div>
+          <div class="hero-pills">
+            <span class="hero-pill">小型文档优先</span>
+            <span class="hero-pill">查询驱动抽图</span>
+            <span class="hero-pill">专家数值计算</span>
+          </div>
+          <div class="hero-metrics">
+            <div class="hero-metric">
+              <strong>问题图谱</strong>
+              <span>按查询动态生成</span>
+            </div>
+            <div class="hero-metric">
+              <strong>证据回溯</strong>
+              <span>文档与结构同步展示</span>
+            </div>
+            <div class="hero-metric">
+              <strong>专家执行</strong>
+              <span>求和 / 计数 / 预测分层处理</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-stage">
+          <div class="stage-card top">
+            <p class="stage-kicker">输入</p>
+            <h2>文档 + 问题</h2>
+            <p>报告、表格、JSON、小型业务文档。</p>
+          </div>
+          <div class="stage-arrow">↓</div>
+          <div class="stage-card middle">
+            <p class="stage-kicker">中间层</p>
+            <h2>LLM 抽取问题图谱</h2>
+            <p>不是直接回答，而是先生成可计算结构。</p>
+          </div>
+          <div class="stage-arrow">↓</div>
+          <div class="stage-card bottom">
+            <p class="stage-kicker">输出</p>
+            <h2>专家执行结果</h2>
+            <p>答案、证据、图谱模式、执行细节。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="overview" class="feature-grid">
+        <article class="feature-card">
+          <p class="feature-tag">01</p>
+          <h3>查询驱动抽取</h3>
+          <p>同一份文档，不同问题生成不同图谱。</p>
+        </article>
+        <article class="feature-card">
+          <p class="feature-tag">02</p>
+          <h3>证据可追溯</h3>
+          <p>原文、抽取记录与图谱同步呈现。</p>
+        </article>
+        <article class="feature-card">
+          <p class="feature-tag">03</p>
+          <h3>专家化执行</h3>
+          <p>求和、计数、预测由不同专家分层执行。</p>
+        </article>
+      </section>
+
+      <section id="architecture" class="architecture-showcase">
+        <div class="architecture-copy">
+          <p class="landing-eyebrow">产品架构示意</p>
+          <h2>一图看懂产品链路。</h2>
+          <p>从文档输入到查询图谱，再到专家执行，所有模块都围绕“可解释的数值推理”组织。</p>
+        </div>
+
+        <div class="architecture-board" aria-label="产品架构图">
+          <div class="arch-legend">
+            <span class="legend-pill legend-doc">文档输入</span>
+            <span class="legend-pill legend-query">问题 / 条件</span>
+            <span class="legend-pill legend-expert">专家节点</span>
+            <span class="legend-pill legend-company">公司节点</span>
+            <span class="legend-pill legend-history">历史上下文</span>
+          </div>
+
+          <div class="arch-canvas">
+            <div class="arch-link link-doc-query"></div>
+            <div class="arch-link link-query-filter-a"></div>
+            <div class="arch-link link-query-filter-b"></div>
+            <div class="arch-link link-query-expert"></div>
+            <div class="arch-link link-filter-a-expert"></div>
+            <div class="arch-link link-filter-b-expert"></div>
+            <div class="arch-link link-expert-company-a"></div>
+            <div class="arch-link link-expert-company-b"></div>
+            <div class="arch-link link-expert-company-c"></div>
+            <div class="arch-link link-history-expert"></div>
+
+            <div class="arch-node-card node-doc">
+              <p class="arch-kicker">输入层</p>
+              <h3>文档输入</h3>
+              <small>报告、CSV、JSON、Markdown 表格</small>
+            </div>
+
+            <div class="arch-node-card node-query">
+              <p class="arch-kicker">问题节点</p>
+              <h3>当前问题</h3>
+              <small>例如：请统计收入不低于 1200 的公司数量</small>
+            </div>
+
+            <div class="arch-node-card node-filter-a">
+              <p class="arch-kicker">筛选条件</p>
+              <h3>年份 = 2024</h3>
+              <small>按问题约束抽取图谱范围</small>
+            </div>
+
+            <div class="arch-node-card node-filter-b">
+              <p class="arch-kicker">筛选条件</p>
+              <h3>收入 ≥ 1200</h3>
+              <small>只保留计算所需的结构</small>
+            </div>
+
+            <div class="arch-node-card node-expert">
+              <p class="arch-kicker">核心执行</p>
+              <h3>计数专家</h3>
+              <small>读取图谱并完成稳定数值推理</small>
+            </div>
+
+            <div class="arch-node-card node-company-a">
+              <p class="arch-kicker">公司节点</p>
+              <h3>Alpha Insurance</h3>
+              <small>收入 1500 · 营业利润 180</small>
+            </div>
+
+            <div class="arch-node-card node-company-b">
+              <p class="arch-kicker">公司节点</p>
+              <h3>Beta Insurance</h3>
+              <small>收入 1200 · 营业利润 160</small>
+            </div>
+
+            <div class="arch-node-card node-company-c">
+              <p class="arch-kicker">公司节点</p>
+              <h3>Delta Bank</h3>
+              <small>收入 2100 · 营业利润 310</small>
+            </div>
+
+            <div class="arch-node-card node-history">
+              <p class="arch-kicker">历史上下文</p>
+              <h3>历史记录</h3>
+              <small>预测类问题下提供时间序列支持</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="product-story">
+        <div class="story-copy">
+          <p class="landing-eyebrow">为什么这样设计</p>
+          <h2>不是直接问答，而是先搭图，再计算。</h2>
+          <p>文档理解交给大模型，数值推理交给专家模型，形成更稳定、更可解释的产品行为。</p>
+        </div>
+        <div class="story-flow">
+          <div class="flow-step">
+            <span>文档读取</span>
+            <small>保留全文上下文</small>
+          </div>
+          <div class="flow-divider">→</div>
+          <div class="flow-step">
+            <span>问题约束</span>
+            <small>明确当前目标</small>
+          </div>
+          <div class="flow-divider">→</div>
+          <div class="flow-step">
+            <span>图谱抽取</span>
+            <small>只抽当前问题需要的结构</small>
+          </div>
+          <div class="flow-divider">→</div>
+          <div class="flow-step">
+            <span>专家计算</span>
+            <small>输出答案和解释</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="scenario-board">
+        <div class="scenario-card">
+          <p class="landing-eyebrow">适用问题</p>
+          <h3>一个界面覆盖三类典型问题</h3>
+          <ul>
+            <li>行业收入总和是多少</li>
+            <li>满足条件的公司数量是多少</li>
+            <li>目标公司的下一步数值预测</li>
+          </ul>
+        </div>
+        <div class="scenario-card emphasis">
+          <p class="landing-eyebrow">展示重点</p>
+          <h3>展示的不是黑盒答案，而是完整链路。</h3>
+          <p>证据、图谱、专家和结果都能在同一产品界面里被清晰解释。</p>
+        </div>
+      </section>
+
+      <section class="cta-band">
+        <div>
+          <p class="landing-eyebrow">准备开始</p>
+          <h2>进入工作台，上传一份小文档开始演示。</h2>
+        </div>
+        <a class="hero-btn primary" href="/workbench">打开工作台</a>
+      </section>
+    </main>
+  </body>
+</html>

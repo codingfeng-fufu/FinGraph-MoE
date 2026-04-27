@@ -1,0 +1,438 @@
+{
+  "benchmark_id": "qa_benchmark_v1",
+  "description": "A 50-QA benchmark for the small-document product demo. The questions are distributed across 5 domain-specific documents.",
+  "domains": [
+    {
+      "domain_id": "insurance",
+      "title": "Insurance",
+      "document_file": "docs/insurance_report.md",
+      "qa_count": 10
+    },
+    {
+      "domain_id": "banking",
+      "title": "Banking",
+      "document_file": "docs/banking_report.md",
+      "qa_count": 10
+    },
+    {
+      "domain_id": "healthcare",
+      "title": "Healthcare",
+      "document_file": "docs/healthcare_report.md",
+      "qa_count": 10
+    },
+    {
+      "domain_id": "retail",
+      "title": "Retail",
+      "document_file": "docs/retail_report.md",
+      "qa_count": 10
+    },
+    {
+      "domain_id": "industrial_equipment",
+      "title": "Industrial Equipment",
+      "document_file": "docs/industrial_equipment_report.md",
+      "qa_count": 10
+    }
+  ],
+  "qas": [
+    {
+      "qa_id": "insurance_01",
+      "domain_id": "insurance",
+      "document_file": "docs/insurance_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2024 年这些保险公司的收入总和。",
+      "answer": 5280.0
+    },
+    {
+      "qa_id": "insurance_02",
+      "domain_id": "insurance",
+      "document_file": "docs/insurance_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2024 年这些保险公司的净利润总和。",
+      "answer": 387.0
+    },
+    {
+      "qa_id": "insurance_03",
+      "domain_id": "insurance",
+      "document_file": "docs/insurance_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2024 年这些保险公司的营业利润总和。",
+      "answer": 655.0
+    },
+    {
+      "qa_id": "insurance_04",
+      "domain_id": "insurance",
+      "document_file": "docs/insurance_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2023 年这些保险公司的收入总和。",
+      "answer": 4760.0
+    },
+    {
+      "qa_id": "insurance_05",
+      "domain_id": "insurance",
+      "document_file": "docs/insurance_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年收入不低于 1000 的保险公司数量。",
+      "answer": 3
+    },
+    {
+      "qa_id": "insurance_06",
+      "domain_id": "insurance",
+      "document_file": "docs/insurance_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年净利润不低于 80 的保险公司数量。",
+      "answer": 2
+    },
+    {
+      "qa_id": "insurance_07",
+      "domain_id": "insurance",
+      "document_file": "docs/insurance_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年收入不低于 900 且净利润不低于 60 的保险公司数量。",
+      "answer": 4
+    },
+    {
+      "qa_id": "insurance_08",
+      "domain_id": "insurance",
+      "document_file": "docs/insurance_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年营业利润低于 100 的保险公司数量。",
+      "answer": 1
+    },
+    {
+      "qa_id": "insurance_09",
+      "domain_id": "insurance",
+      "document_file": "docs/insurance_report.md",
+      "expected_expert": "predict",
+      "query": "请预测 Aegis Life 在 2024 年的收入。",
+      "answer": 1280.0
+    },
+    {
+      "qa_id": "insurance_10",
+      "domain_id": "insurance",
+      "document_file": "docs/insurance_report.md",
+      "expected_expert": "predict",
+      "query": "请预测 Zenith Cover 在 2024 年的收入。",
+      "answer": 1170.0
+    },
+    {
+      "qa_id": "banking_01",
+      "domain_id": "banking",
+      "document_file": "docs/banking_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2024 年这些银行的收入总和。",
+      "answer": 9500.0
+    },
+    {
+      "qa_id": "banking_02",
+      "domain_id": "banking",
+      "document_file": "docs/banking_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2024 年这些银行的净利润总和。",
+      "answer": 790.0
+    },
+    {
+      "qa_id": "banking_03",
+      "domain_id": "banking",
+      "document_file": "docs/banking_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2024 年这些银行的营业利润总和。",
+      "answer": 1495.0
+    },
+    {
+      "qa_id": "banking_04",
+      "domain_id": "banking",
+      "document_file": "docs/banking_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2023 年这些银行的收入总和。",
+      "answer": 8805.0
+    },
+    {
+      "qa_id": "banking_05",
+      "domain_id": "banking",
+      "document_file": "docs/banking_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年收入不低于 2000 的银行数量。",
+      "answer": 2
+    },
+    {
+      "qa_id": "banking_06",
+      "domain_id": "banking",
+      "document_file": "docs/banking_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年净利润不低于 150 的银行数量。",
+      "answer": 3
+    },
+    {
+      "qa_id": "banking_07",
+      "domain_id": "banking",
+      "document_file": "docs/banking_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年收入不低于 1600 且营业利润不低于 250 的银行数量。",
+      "answer": 4
+    },
+    {
+      "qa_id": "banking_08",
+      "domain_id": "banking",
+      "document_file": "docs/banking_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年收入等于 1405 的银行数量。",
+      "answer": 1
+    },
+    {
+      "qa_id": "banking_09",
+      "domain_id": "banking",
+      "document_file": "docs/banking_report.md",
+      "expected_expert": "predict",
+      "query": "请预测 Metro Bank 在 2024 年的收入。",
+      "answer": 2450.0
+    },
+    {
+      "qa_id": "banking_10",
+      "domain_id": "banking",
+      "document_file": "docs/banking_report.md",
+      "expected_expert": "predict",
+      "query": "请预测 Pioneer Trust 在 2024 年的收入。",
+      "answer": 1405.0
+    },
+    {
+      "qa_id": "healthcare_01",
+      "domain_id": "healthcare",
+      "document_file": "docs/healthcare_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2024 年这些医疗服务公司的收入总和。",
+      "answer": 5820.0
+    },
+    {
+      "qa_id": "healthcare_02",
+      "domain_id": "healthcare",
+      "document_file": "docs/healthcare_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2024 年这些医疗服务公司的净利润总和。",
+      "answer": 510.0
+    },
+    {
+      "qa_id": "healthcare_03",
+      "domain_id": "healthcare",
+      "document_file": "docs/healthcare_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2024 年这些医疗服务公司的营业利润总和。",
+      "answer": 838.0
+    },
+    {
+      "qa_id": "healthcare_04",
+      "domain_id": "healthcare",
+      "document_file": "docs/healthcare_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2023 年这些医疗服务公司的收入总和。",
+      "answer": 5400.0
+    },
+    {
+      "qa_id": "healthcare_05",
+      "domain_id": "healthcare",
+      "document_file": "docs/healthcare_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年收入不低于 1000 的医疗服务公司数量。",
+      "answer": 3
+    },
+    {
+      "qa_id": "healthcare_06",
+      "domain_id": "healthcare",
+      "document_file": "docs/healthcare_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年净利润不低于 90 的医疗服务公司数量。",
+      "answer": 3
+    },
+    {
+      "qa_id": "healthcare_07",
+      "domain_id": "healthcare",
+      "document_file": "docs/healthcare_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年收入不低于 900 且净利润不低于 70 的医疗服务公司数量。",
+      "answer": 4
+    },
+    {
+      "qa_id": "healthcare_08",
+      "domain_id": "healthcare",
+      "document_file": "docs/healthcare_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年营业利润低于 130 的医疗服务公司数量。",
+      "answer": 2
+    },
+    {
+      "qa_id": "healthcare_09",
+      "domain_id": "healthcare",
+      "document_file": "docs/healthcare_report.md",
+      "expected_expert": "predict",
+      "query": "请预测 Harmony Hospitals 在 2024 年的收入。",
+      "answer": 1660.0
+    },
+    {
+      "qa_id": "healthcare_10",
+      "domain_id": "healthcare",
+      "document_file": "docs/healthcare_report.md",
+      "expected_expert": "predict",
+      "query": "请预测 CareAxis Diagnostics 在 2024 年的收入。",
+      "answer": 1045.0
+    },
+    {
+      "qa_id": "retail_01",
+      "domain_id": "retail",
+      "document_file": "docs/retail_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2024 年这些零售公司的收入总和。",
+      "answer": 5643.0
+    },
+    {
+      "qa_id": "retail_02",
+      "domain_id": "retail",
+      "document_file": "docs/retail_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2024 年这些零售公司的净利润总和。",
+      "answer": 388.0
+    },
+    {
+      "qa_id": "retail_03",
+      "domain_id": "retail",
+      "document_file": "docs/retail_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2024 年这些零售公司的营业利润总和。",
+      "answer": 684.0
+    },
+    {
+      "qa_id": "retail_04",
+      "domain_id": "retail",
+      "document_file": "docs/retail_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2023 年这些零售公司的收入总和。",
+      "answer": 5260.0
+    },
+    {
+      "qa_id": "retail_05",
+      "domain_id": "retail",
+      "document_file": "docs/retail_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年收入不低于 1000 的零售公司数量。",
+      "answer": 3
+    },
+    {
+      "qa_id": "retail_06",
+      "domain_id": "retail",
+      "document_file": "docs/retail_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年净利润不低于 80 的零售公司数量。",
+      "answer": 2
+    },
+    {
+      "qa_id": "retail_07",
+      "domain_id": "retail",
+      "document_file": "docs/retail_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年收入不低于 900 且营业利润不低于 110 的零售公司数量。",
+      "answer": 4
+    },
+    {
+      "qa_id": "retail_08",
+      "domain_id": "retail",
+      "document_file": "docs/retail_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年收入低于 900 的零售公司数量。",
+      "answer": 1
+    },
+    {
+      "qa_id": "retail_09",
+      "domain_id": "retail",
+      "document_file": "docs/retail_report.md",
+      "expected_expert": "predict",
+      "query": "请预测 Lotus Mart 在 2024 年的收入。",
+      "answer": 1488.0
+    },
+    {
+      "qa_id": "retail_10",
+      "domain_id": "retail",
+      "document_file": "docs/retail_report.md",
+      "expected_expert": "predict",
+      "query": "请预测 Urban Basket 在 2024 年的收入。",
+      "answer": 1265.0
+    },
+    {
+      "qa_id": "industrial_equipment_01",
+      "domain_id": "industrial_equipment",
+      "document_file": "docs/industrial_equipment_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2024 年这些工业设备公司的收入总和。",
+      "answer": 7118.0
+    },
+    {
+      "qa_id": "industrial_equipment_02",
+      "domain_id": "industrial_equipment",
+      "document_file": "docs/industrial_equipment_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2024 年这些工业设备公司的净利润总和。",
+      "answer": 592.0
+    },
+    {
+      "qa_id": "industrial_equipment_03",
+      "domain_id": "industrial_equipment",
+      "document_file": "docs/industrial_equipment_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2024 年这些工业设备公司的营业利润总和。",
+      "answer": 1014.0
+    },
+    {
+      "qa_id": "industrial_equipment_04",
+      "domain_id": "industrial_equipment",
+      "document_file": "docs/industrial_equipment_report.md",
+      "expected_expert": "sum",
+      "query": "请计算 2023 年这些工业设备公司的收入总和。",
+      "answer": 6695.0
+    },
+    {
+      "qa_id": "industrial_equipment_05",
+      "domain_id": "industrial_equipment",
+      "document_file": "docs/industrial_equipment_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年收入不低于 1300 的工业设备公司数量。",
+      "answer": 3
+    },
+    {
+      "qa_id": "industrial_equipment_06",
+      "domain_id": "industrial_equipment",
+      "document_file": "docs/industrial_equipment_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年净利润不低于 100 的工业设备公司数量。",
+      "answer": 4
+    },
+    {
+      "qa_id": "industrial_equipment_07",
+      "domain_id": "industrial_equipment",
+      "document_file": "docs/industrial_equipment_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年收入不低于 1200 且营业利润不低于 180 的工业设备公司数量。",
+      "answer": 3
+    },
+    {
+      "qa_id": "industrial_equipment_08",
+      "domain_id": "industrial_equipment",
+      "document_file": "docs/industrial_equipment_report.md",
+      "expected_expert": "count",
+      "query": "请统计 2024 年收入等于 1045 的工业设备公司数量。",
+      "answer": 1
+    },
+    {
+      "qa_id": "industrial_equipment_09",
+      "domain_id": "industrial_equipment",
+      "document_file": "docs/industrial_equipment_report.md",
+      "expected_expert": "predict",
+      "query": "请预测 Atlas Machines 在 2024 年的收入。",
+      "answer": 1845.0
+    },
+    {
+      "qa_id": "industrial_equipment_10",
+      "domain_id": "industrial_equipment",
+      "document_file": "docs/industrial_equipment_report.md",
+      "expected_expert": "predict",
+      "query": "请预测 Vector Hydraulics 在 2024 年的收入。",
+      "answer": 1260.0
+    }
+  ]
+}

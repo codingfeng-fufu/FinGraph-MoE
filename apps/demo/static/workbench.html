@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>查询驱动图谱工作台</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">查询驱动图谱工作台</p>
+          <h1>把文档、抽取图谱和专家答案放在同一个产品界面里展示。</h1>
+          <p class="lede">
+            这个演示面向小型文档。系统会先读取你上传的文本，再让大模型按当前问题抽取所需图谱，
+            然后把图谱路由给合适的专家模型，最终完成数值计算。
+          </p>
+        </div>
+
+        <div class="hero-controls">
+          <div class="input-card">
+            <label for="document-file">文档</label>
+            <input id="document-file" type="file" />
+            <div class="actions">
+              <button id="upload-btn">上传文档</button>
+              <button id="doc-reset-btn" class="secondary">清空</button>
+            </div>
+            <div class="doc-summary">
+              <p id="doc-name" class="doc-name">尚未上传文档</p>
+              <p id="doc-meta" class="doc-meta">支持上传小型报告、备忘录、CSV、JSON 或 Markdown 表格。</p>
+            </div>
+          </div>
+
+          <div class="input-card">
+            <label for="query">问题</label>
+            <textarea id="query" rows="3" placeholder="请输入一个针对当前文档的数值问题..." disabled></textarea>
+            <div class="actions">
+              <button id="run-btn" disabled>开始分析</button>
+              <button id="reset-btn" class="secondary">重置视图</button>
+            </div>
+            <div id="examples" class="examples"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="status-ribbon">
+        <div class="status-card">
+          <span class="status-label">阶段</span>
+          <strong id="status-stage">空闲</strong>
+        </div>
+        <div class="status-card">
+          <span class="status-label">专家</span>
+          <strong id="status-expert">待定</strong>
+        </div>
+        <div class="status-card">
+          <span class="status-label">置信度</span>
+          <strong id="status-confidence">--</strong>
+        </div>
+        <div class="status-card">
+          <span class="status-label">图谱模式</span>
+          <strong id="status-mode">待定</strong>
+        </div>
+        <div class="status-card wide">
+          <span class="status-label">系统说明</span>
+          <strong id="status-note">上传一份文档后开始体验整个分析流程。</strong>
+        </div>
+      </section>
+
+      <section class="step-strip" aria-label="流程阶段">
+        <div class="step-chip" data-step="upload">1. 上传文档</div>
+        <div class="step-link"></div>
+        <div class="step-chip" data-step="query">2. 输入问题</div>
+        <div class="step-link"></div>
+        <div class="step-chip" data-step="extract">3. 大模型抽取问题图谱</div>
+        <div class="step-link"></div>
+        <div class="step-chip" data-step="route">4. 路由到专家</div>
+        <div class="step-link"></div>
+        <div class="step-chip" data-step="result">5. 计算结果</div>
+      </section>
+
+      <section class="workspace">
+        <article class="panel evidence-panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-eyebrow">文档</p>
+              <h2>证据面板</h2>
+            </div>
+            <div class="panel-badges">
+              <span id="evidence-count" class="badge">0 条相关证据</span>
+              <span id="record-count" class="badge badge-soft">0 条抽取记录</span>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <div class="section-head">
+              <h3>原文片段</h3>
+              <p>系统会根据当前问题图谱，自动高亮与计算最相关的文档片段。</p>
+            </div>
+            <div id="evidence-lines" class="evidence-lines"></div>
+          </div>
+
+          <div class="panel-section">
+            <div class="section-head">
+              <h3>抽取记录</h3>
+              <p>这里展示大模型为当前问题抽出的规范化财务记录。</p>
+            </div>
+            <div id="record-list" class="record-list"></div>
+          </div>
+        </article>
+
+        <article class="panel graph-panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-eyebrow">图谱</p>
+              <h2>问题图谱</h2>
+            </div>
+            <div class="panel-badges">
+              <span id="graph-mode-badge" class="badge">未生成</span>
+              <span id="graph-stats-badge" class="badge badge-soft">0 个节点 / 0 条边</span>
+            </div>
+          </div>
+
+          <div class="panel-section graph-stage">
+            <div class="section-head">
+              <h3>图谱视图</h3>
+              <p>同一份文档在不同问题下，会生成不同的查询图谱。</p>
+            </div>
+            <div class="graph-board">
+              <svg id="graph-svg" viewBox="0 0 760 430" aria-label="查询驱动图谱视图"></svg>
+            </div>
+          </div>
+
+          <div class="graph-caption">
+            <p id="graph-caption">运行一次查询后，这里会展示问题节点、筛选节点、公司节点以及专家绑定关系。</p>
+          </div>
+        </article>
+
+        <article class="panel expert-panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-eyebrow">专家</p>
+              <h2>执行结果</h2>
+            </div>
+            <div class="panel-badges">
+              <span id="expert-badge" class="badge">待定</span>
+            </div>
+          </div>
+
+          <div id="result-metrics" class="metric-grid"></div>
+
+          <div class="panel-section">
+            <div class="section-head">
+              <h3>路由投票</h3>
+              <p>系统会基于检索到的相似训练问题，对不同专家进行加权投票。</p>
+            </div>
+            <div id="route-bars" class="route-bars"></div>
+          </div>
+
+          <div class="panel-section">
+            <div class="section-head">
+              <h3>相似问题</h3>
+              <p>这里展示影响专家选择的最近邻训练问题。</p>
+            </div>
+            <div id="neighbor-list" class="neighbor-list"></div>
+          </div>
+
+          <div class="panel-section">
+            <div class="section-head">
+              <h3>执行信息</h3>
+              <p>展示本次执行用到的模型、图规模和图谱构建细节。</p>
+            </div>
+            <div id="execution-facts" class="fact-list"></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="debug-shell">
+        <button id="debug-toggle" class="secondary">查看调试 JSON</button>
+        <pre id="debug-output" hidden>运行一次查询后，这里会显示原始返回数据。</pre>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
